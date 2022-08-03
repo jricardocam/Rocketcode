@@ -9,7 +9,7 @@
         <input type="submit" value="Enviar" class="btn" @click="procesar" >
     </div>
     <div class="space">
-        <div class="bub" v-for="item of datosContacto">{{item.contacto}}</div>
+        <div class="bub" v-for:="item of datosContacto">{{item.contacto}}</div>
       </div>
 </div>
 </template>
@@ -29,8 +29,20 @@ export default{
             this.datosContacto.push({
                 contacto: this.telefono+'\n'+this.email
                 });
-        }
+            this.telefono='';
+            this.email='';
+            localStorage.setItem('datosContacto', JSON.stringify(this.datosContacto));
+            }
+        },
+created: function(){
+    let datosDB= JSON.parse(localStorage.getItem('datosContacto'));
+    if(datosDB==null){
+        this.datosContacto=[];
+    }else{
+        this.datosContacto=datosDB;
     }
+}
+
 }
 </script>
 
@@ -39,7 +51,7 @@ export default{
 .space{
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-left: 1rem;
+    margin-left: 15.5rem;
 }
 
 .bubble {

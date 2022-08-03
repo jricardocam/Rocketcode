@@ -4,6 +4,14 @@
     <Nombre/>
     <Fecha/>
     <Contacto/>
+    <div class="space">
+        <input type="submit" value="Inicio" class="btn" @click="mostrar" >
+          <div class="space">
+          <div class="bub" v-for:="item of datosGenerales">{{item.generales}}
+          <div v-for:="items of generales">{{items}}</div>
+          </div>
+          </div>
+    </div>
   </div>
 
 </template>
@@ -19,7 +27,21 @@ export default {
     Nombre,
     Fecha,
     Contacto
-  }
+  },
+  data(){
+        return{
+            datosGenerales: []
+        }
+},
+methods: {
+    mostrar(){
+        this.datosGenerales.push({
+            generales: "Nombre Completo: "+localStorage.getItem('nombreCompleto')+
+            "\nDatos de Contacto"+localStorage.getItem('datosContacto')
+            +"\nFecha De Nacimiento"+localStorage.getItem('fechaCompleta')
+            });
+    }
+}
 }
 </script>
 <style>
@@ -38,7 +60,7 @@ h1{
 .bub {
   position: relative;
   font-family: sans-serif;
-  font-size: 1.7em;
+  font-size: 1.2em;
   line-height: 24px;
   width:22rem;
   background: rgb(253, 34, 144);

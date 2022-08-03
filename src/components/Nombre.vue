@@ -11,7 +11,7 @@
 		<input type="submit" value="Enviar" class="btn" @click="procesar">
     </div>
       <div class="space">
-        <div class="bub" v-for="item of nombreCompleto">{{item.nombre}}</div>
+        <div class="bub" v-for:="item of nombreCompleto">{{item.nombre}}</div>
       </div>
 </div>
 
@@ -35,8 +35,20 @@ methods: {
         this.nombreCompleto.push({
             nombre: this.prinombre + ' ' + this.segnombre + ' ' + this.appaterno + ' ' + this.appmaterno
             });
-
+        this.prinombre='';
+        this.segnombre='';
+        this.appaterno='';
+        this.appmaterno='';
+        localStorage.setItem('nombreCompleto', JSON.stringify(this.nombreCompleto));
+    },
+created: function(){
+    let datosDB= JSON.parse(localStorage.getItem('nombreCompleto'));
+    if(datosDB==null){
+        this.nombreCompleto=[];
+    }else{
+        this.nombreCompleto=datosDB;
     }
+}
 }
 }
 </script>
