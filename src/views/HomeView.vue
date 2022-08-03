@@ -1,16 +1,16 @@
 <template>
-  <div class="home">
+  <div  class="home">
     <Nombre/>
       <div class="space">
-        <div class="bub">Hola</div>
+        <div class="bub">Jose Ricardo Camacho Camacho</div>
       </div>
     <Fecha/>
       <div class="space">
-        <div class="bub">Hola</div>
+        <div class="bub">28/10/1994</div>
       </div>
     <Contacto/>
       <div class="space">
-        <div class="bub">Hola</div>
+        <div class="bub">email</div>
       </div>
   </div>
 </template>

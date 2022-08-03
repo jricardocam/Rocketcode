@@ -3,15 +3,38 @@
     <div class="bubble bubble-bottom-left">
         <h1>¿Cuál es tu Nombre?</h1>
         <form action="">
-                <input type="text" name="prinombre" id="prinombre" placeholder="Ingresa tu Primer Nombre" required>
-                <input type="text" name="segnombre" id="segnombre" placeholder="Ingresa tu Segundo Nombre" required>
-                <input type="text" name="appaterno" id="appaterno" placeholder="Ingresa tu Apellido Paterno" required>
-                <input type="text" name="apmaterno" id="apmaterno" placeholder="Ingresa tu Apellido Materno" required>
+                <input v-model="datosNombre.prinombre" type="text" name="prinombre" id="prinombre" placeholder="Ingresa tu Primer Nombre" required>
+                <input v-model="datosNombre.segnombre" type="text" name="segnombre" id="segnombre" placeholder="Ingresa tu Segundo Nombre" required>
+                <input v-model="datosNombre.appaterno" type="text" name="appaterno" id="appaterno" placeholder="Ingresa tu Apellido Paterno" required>
+                <input v-model="datosNombre.apmaterno" type="text" name="apmaterno" id="apmaterno" placeholder="Ingresa tu Apellido Materno" required>
         </form>   
-        <button class="btn" type="submit">Enviar</button>
+		<input type="submit" value="Enviar" class="btn" @click="procesar">
     </div>
 </div>
 </template>
+
+<script>  
+
+export default{
+    name: 'Nombre',
+    data(){
+        return{
+            datosNombre: {
+                prinombre: '',
+				segnombre: '',
+				appaterno: '',
+				apmaterno: ''
+            }
+        }
+    },
+    methods: {
+        procesar(){
+            alert(this.datosNombre.prinombre + ' ' + this.datosNombre.segnombre + ' ' + this.datosNombre.appaterno + ' ' + this.datosNombre.apmaterno);
+        }
+    }
+}
+</script>
+
 <style>
 
 form{
