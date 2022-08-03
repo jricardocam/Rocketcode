@@ -3,14 +3,18 @@
     <div class="bubble bubble-bottom-left">
         <h1>¿Cuál es tu Nombre?</h1>
         <form action="">
-                <input v-model="datosNombre.prinombre" type="text" name="prinombre" id="prinombre" placeholder="Ingresa tu Primer Nombre" required>
-                <input v-model="datosNombre.segnombre" type="text" name="segnombre" id="segnombre" placeholder="Ingresa tu Segundo Nombre" required>
-                <input v-model="datosNombre.appaterno" type="text" name="appaterno" id="appaterno" placeholder="Ingresa tu Apellido Paterno" required>
-                <input v-model="datosNombre.apmaterno" type="text" name="apmaterno" id="apmaterno" placeholder="Ingresa tu Apellido Materno" required>
+                <input v-model="prinombre" type="text" name="prinombre" id="prinombre" placeholder="Ingresa tu Primer Nombre" required>
+                <input v-model="segnombre" type="text" name="segnombre" id="segnombre" placeholder="Ingresa tu Segundo Nombre" required>
+                <input v-model="appaterno" type="text" name="appaterno" id="appaterno" placeholder="Ingresa tu Apellido Paterno" required>
+                <input v-model="appmaterno" type="text" name="apmaterno" id="apmaterno" placeholder="Ingresa tu Apellido Materno" required>
         </form>   
 		<input type="submit" value="Enviar" class="btn" @click="procesar">
     </div>
+      <div class="space">
+        <div class="bub" v-for="item of nombreCompleto">{{item.nombre}}</div>
+      </div>
 </div>
+
 </template>
 
 <script>  
@@ -19,19 +23,21 @@ export default{
     name: 'Nombre',
     data(){
         return{
-            datosNombre: {
-                prinombre: '',
-				segnombre: '',
-				appaterno: '',
-				apmaterno: ''
-            }
+            prinombre: '',
+            segnombre: '',
+            appaterno: '',
+            appmaterno: '',
+            nombreCompleto: []
         }
-    },
-    methods: {
-        procesar(){
-            alert(this.datosNombre.prinombre + ' ' + this.datosNombre.segnombre + ' ' + this.datosNombre.appaterno + ' ' + this.datosNombre.apmaterno);
-        }
+},
+methods: {
+    procesar(){
+        this.nombreCompleto.push({
+            nombre: this.prinombre + ' ' + this.segnombre + ' ' + this.appaterno + ' ' + this.appmaterno
+            });
+
     }
+}
 }
 </script>
 

@@ -3,13 +3,15 @@
     <div class="bubble bubble-bottom-left">
         <h1>Contacto</h1>
         <form >
-                <input v-model="datosContacto.telefono" type="tel" name="telefon" id="telefono" placeholder="Ingresa tu Telefono" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}" required>
-                <input v-model="datosContacto.email" type="email" name="email" id="email" placeholder="Ingresa tu Email" required>
+                <input v-model="telefono" type="tel" name="telefon" id="telefono" placeholder="Ingresa tu Telefono" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{4}" required>
+                <input v-model="email" type="email" name="email" id="email" placeholder="Ingresa tu Email" required>
         </form>
-        <input type="submit" value="Enviar" class="btn" @click="procesar">
+        <input type="submit" value="Enviar" class="btn" @click="procesar" >
     </div>
+    <div class="space">
+        <div class="bub" v-for="item of datosContacto">{{item.contacto}}</div>
+      </div>
 </div>
-    
 </template>
 
 <script>  
@@ -17,15 +19,16 @@ export default{
     name: 'Contacto',
     data(){
         return{
-            datosContacto: {
                 telefono: '',
-                email: ''
+                email: '',
+                datosContacto:[]
             }
-        }
-    },
-    methods: {
-        procesar: function(){
-           alert(this.datosContacto.telefono + ' \n' + this.datosContacto.email);
+}, 
+ methods: {
+            procesar(){
+            this.datosContacto.push({
+                contacto: this.telefono+'\n'+this.email
+                });
         }
     }
 }
@@ -36,7 +39,7 @@ export default{
 .space{
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-left: 18rem;
+    margin-left: 1rem;
 }
 
 .bubble {
